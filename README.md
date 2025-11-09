@@ -4,15 +4,17 @@
 
 Truth Battle est un jeu de quiz révolutionnaire qui combine questions de culture générale et débats interactifs alimentés par l'IA. Après chaque question, défends ta réponse face à une IA contradictrice et gagne des points selon la qualité de tes arguments.
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
+![PWA](https://img.shields.io/badge/PWA-Ready-success.svg)
 
 ## 🌟 Caractéristiques Principales
 
 ### 🧠 Quiz Intelligent
-- Questions variées sur **culture, science, société, technologie, histoire, environnement**
+- **38 questions** variées sur **culture, science, société, technologie, histoire, environnement, sports, politique**
 - Trois niveaux de difficulté : Facile, Moyen, Difficile
 - Base de données extensible avec questions gratuites et premium
+- Questions constamment mises à jour
 
 ### 💬 Système de Débat IA
 - Après chaque question, **défends ta réponse** face à l'IA
@@ -42,19 +44,40 @@ Truth Battle est un jeu de quiz révolutionnaire qui combine questions de cultur
 - Création de tournois personnalisés
 - Statistiques avancées
 
+### 🔥 Nouvelles Fonctionnalités v2.0
+- **PWA (Progressive Web App)** : Installable sur mobile comme une vraie app!
+- **Sauvegarde Automatique** : Tous tes progrès sont sauvegardés avec localStorage
+- **Système de Séries** : Gagne des séries en jouant chaque jour
+- **Tutorial Interactif** : Guide animé pour les nouveaux utilisateurs
+- **Notification de Séries** : Sois notifié de tes séries actives
+- **Export/Import** : Sauvegarde et restaure tes données
+- **Optimisation Mobile** : Interface parfaitement adaptée aux smartphones
+
 ## 🚀 Installation
 
-### Prérequis
+### ⚡ Quick Start (Recommandé)
+
+Le moyen le plus rapide de démarrer:
+
+```bash
+chmod +x setup.sh && ./setup.sh
+```
+
+Le script interactif vous guide à travers tout le processus!
+
+### 📝 Installation Manuelle
+
+#### Prérequis
 - Node.js 18+
 - npm ou yarn
 
-### Installation des dépendances
+#### Installation des dépendances
 
 ```bash
 npm install
 ```
 
-### Lancement en développement
+#### Lancement en développement
 
 ```bash
 npm run dev
@@ -62,7 +85,7 @@ npm run dev
 
 L'application sera accessible sur `http://localhost:5173`
 
-### Build pour production
+#### Build pour production
 
 ```bash
 npm run build
@@ -70,11 +93,23 @@ npm run build
 
 Les fichiers optimisés seront dans le dossier `dist/`
 
-### Preview du build
+#### Preview du build
 
 ```bash
 npm run preview
 ```
+
+### 📱 Installation PWA
+
+Sur mobile:
+1. Ouvrez Truth Battle dans votre navigateur
+2. Appuyez sur "Menu" > "Ajouter à l'écran d'accueil"
+3. Profitez de l'expérience app native!
+
+Sur desktop (Chrome/Edge):
+1. Cliquez sur l'icône d'installation dans la barre d'adresse
+2. Confirmez l'installation
+3. Lancez depuis votre bureau ou menu démarrer!
 
 ## 🏗️ Architecture Technique
 
@@ -98,6 +133,8 @@ src/
 │   ├── DebateScreen.tsx
 │   ├── ResultsScreen.tsx
 │   ├── LeaderboardScreen.tsx
+│   ├── WelcomeTutorial.tsx
+│   ├── StreakNotification.tsx
 │   ├── ProfileScreen.tsx
 │   ├── TournamentsScreen.tsx
 │   └── Navigation.tsx
@@ -108,7 +145,8 @@ src/
 ├── types/             # TypeScript types
 │   └── index.ts
 ├── utils/             # Utilitaires
-│   └── aiDebate.ts    # Logique d'évaluation IA
+│   ├── aiDebate.ts    # Logique d'évaluation IA
+│   └── storage.ts     # localStorage persistence
 ├── App.tsx            # Composant racine
 ├── main.tsx           # Point d'entrée
 └── index.css          # Styles globaux

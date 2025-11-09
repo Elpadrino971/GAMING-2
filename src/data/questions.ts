@@ -241,6 +241,375 @@ export const questions: Question[] = [
     correctAnswer: 1,
     explanation: 'L\'Accord de Paris a été adopté en 2015 lors de la COP21, visant à limiter le réchauffement climatique.',
     debatePrompt: 'Les engagements de l\'Accord de Paris sont-ils suffisants pour lutter contre le changement climatique?'
+  },
+
+  // More Culture
+  {
+    id: 'q16',
+    category: 'culture',
+    difficulty: 'hard',
+    question: 'Quel compositeur est connu pour avoir été sourd pendant une partie de sa carrière?',
+    options: [
+      'Wolfgang Amadeus Mozart',
+      'Ludwig van Beethoven',
+      'Johann Sebastian Bach',
+      'Frédéric Chopin'
+    ],
+    correctAnswer: 1,
+    explanation: 'Beethoven a commencé à perdre l\'audition vers l\'âge de 26 ans et a composé certaines de ses plus grandes œuvres alors qu\'il était complètement sourd.',
+    debatePrompt: 'Comment la surdité de Beethoven a-t-elle pu influencer son style musical et sa créativité?'
+  },
+  {
+    id: 'q17',
+    category: 'culture',
+    difficulty: 'easy',
+    question: 'Quelle est la langue la plus parlée au monde en nombre de locuteurs natifs?',
+    options: [
+      'L\'anglais',
+      'L\'espagnol',
+      'Le mandarin',
+      'L\'hindi'
+    ],
+    correctAnswer: 2,
+    explanation: 'Le mandarin chinois compte environ 920 millions de locuteurs natifs, plus que toute autre langue.',
+    debatePrompt: 'Pourquoi l\'anglais reste-t-il la langue internationale dominante malgré moins de locuteurs natifs?'
+  },
+  {
+    id: 'q18',
+    category: 'culture',
+    difficulty: 'medium',
+    question: 'Qui a peint le plafond de la Chapelle Sixtine?',
+    options: [
+      'Léonard de Vinci',
+      'Raphaël',
+      'Michel-Ange',
+      'Le Caravage'
+    ],
+    correctAnswer: 2,
+    explanation: 'Michel-Ange a peint les fresques du plafond de la Chapelle Sixtine entre 1508 et 1512, incluant la célèbre Création d\'Adam.',
+    debatePrompt: 'Pourquoi cette œuvre est-elle considérée comme l\'une des plus grandes réalisations artistiques de l\'humanité?',
+    isPremium: true
+  },
+
+  // More Science
+  {
+    id: 'q19',
+    category: 'science',
+    difficulty: 'easy',
+    question: 'Combien de planètes compte notre système solaire?',
+    options: [
+      '7',
+      '8',
+      '9',
+      '10'
+    ],
+    correctAnswer: 1,
+    explanation: 'Depuis 2006, notre système solaire compte officiellement 8 planètes, Pluton ayant été reclassée comme planète naine.',
+    debatePrompt: 'Pensez-vous que Pluton devrait être reconsidérée comme une planète? Quels critères définissent une planète?'
+  },
+  {
+    id: 'q20',
+    category: 'science',
+    difficulty: 'hard',
+    question: 'Quelle est la particule élémentaire découverte au CERN en 2012?',
+    options: [
+      'Le quark top',
+      'Le neutrino',
+      'Le boson de Higgs',
+      'Le graviton'
+    ],
+    correctAnswer: 2,
+    explanation: 'Le boson de Higgs a été découvert en 2012 au CERN, confirmant le mécanisme par lequel les particules acquièrent leur masse.',
+    debatePrompt: 'Expliquez l\'importance du boson de Higgs pour notre compréhension de l\'univers.',
+    isPremium: true
+  },
+  {
+    id: 'q21',
+    category: 'science',
+    difficulty: 'medium',
+    question: 'Quel est le plus grand organe du corps humain?',
+    options: [
+      'Le foie',
+      'Le cerveau',
+      'La peau',
+      'Les poumons'
+    ],
+    correctAnswer: 2,
+    explanation: 'La peau est le plus grand organe du corps humain, représentant environ 16% du poids corporel total.',
+    debatePrompt: 'Quelles sont les fonctions essentielles de la peau au-delà de la simple protection?'
+  },
+
+  // More Technology
+  {
+    id: 'q22',
+    category: 'technology',
+    difficulty: 'easy',
+    question: 'Qui est considéré comme le fondateur de Microsoft?',
+    options: [
+      'Steve Jobs',
+      'Mark Zuckerberg',
+      'Bill Gates',
+      'Elon Musk'
+    ],
+    correctAnswer: 2,
+    explanation: 'Bill Gates a co-fondé Microsoft avec Paul Allen en 1975.',
+    debatePrompt: 'Quel impact Microsoft a-t-il eu sur la démocratisation de l\'informatique personnelle?'
+  },
+  {
+    id: 'q23',
+    category: 'technology',
+    difficulty: 'medium',
+    question: 'Quelle technologie permet aux voitures de se conduire de manière autonome?',
+    options: [
+      'Le GPS uniquement',
+      'L\'intelligence artificielle et les capteurs',
+      'La 5G',
+      'La blockchain'
+    ],
+    correctAnswer: 1,
+    explanation: 'Les voitures autonomes utilisent l\'IA, le machine learning, des caméras, des lidars et des capteurs pour naviguer.',
+    debatePrompt: 'Quels sont les principaux obstacles éthiques et techniques à l\'adoption massive des voitures autonomes?'
+  },
+  {
+    id: 'q24',
+    category: 'technology',
+    difficulty: 'hard',
+    question: 'Qu\'est-ce que la blockchain?',
+    options: [
+      'Un type de cryptomonnaie',
+      'Un registre distribué et décentralisé',
+      'Un langage de programmation',
+      'Un protocole de sécurité web'
+    ],
+    correctAnswer: 1,
+    explanation: 'La blockchain est une technologie de registre distribué qui permet de stocker et transmettre des informations de manière transparente et sécurisée.',
+    debatePrompt: 'Au-delà des cryptomonnaies, quelles sont les applications les plus prometteuses de la blockchain?',
+    isPremium: true
+  },
+
+  // More History
+  {
+    id: 'q25',
+    category: 'history',
+    difficulty: 'medium',
+    question: 'En quelle année a eu lieu la Révolution française?',
+    options: [
+      '1776',
+      '1789',
+      '1804',
+      '1815'
+    ],
+    correctAnswer: 1,
+    explanation: 'La Révolution française a commencé en 1789 avec la prise de la Bastille le 14 juillet.',
+    debatePrompt: 'Quels principes de la Révolution française influencent encore les démocraties modernes?'
+  },
+  {
+    id: 'q26',
+    category: 'history',
+    difficulty: 'hard',
+    question: 'Qui était le pharaon égyptien lorsque les pyramides de Gizeh ont été construites?',
+    options: [
+      'Toutânkhamon',
+      'Ramsès II',
+      'Khéops',
+      'Cléopâtre'
+    ],
+    correctAnswer: 2,
+    explanation: 'La Grande Pyramide de Gizeh a été construite sous le règne du pharaon Khéops (Khufu) vers 2560 av. J.-C.',
+    debatePrompt: 'Comment les anciens Égyptiens ont-ils pu construire de telles structures sans technologie moderne?',
+    isPremium: true
+  },
+  {
+    id: 'q27',
+    category: 'history',
+    difficulty: 'easy',
+    question: 'Quel événement a marqué le début de la Seconde Guerre mondiale?',
+    options: [
+      'L\'attaque de Pearl Harbor',
+      'L\'invasion de la Pologne',
+      'Le débarquement en Normandie',
+      'La bataille de Stalingrad'
+    ],
+    correctAnswer: 1,
+    explanation: 'La Seconde Guerre mondiale a commencé le 1er septembre 1939 avec l\'invasion de la Pologne par l\'Allemagne nazie.',
+    debatePrompt: 'Quelles leçons de la Seconde Guerre mondiale sont les plus importantes à retenir aujourd\'hui?'
+  },
+
+  // More Sports
+  {
+    id: 'q28',
+    category: 'sports',
+    difficulty: 'medium',
+    question: 'Combien de joueurs composent une équipe de basketball sur le terrain?',
+    options: [
+      '5',
+      '6',
+      '7',
+      '11'
+    ],
+    correctAnswer: 0,
+    explanation: 'Une équipe de basketball compte 5 joueurs sur le terrain, bien que l\'effectif total soit plus large.',
+    debatePrompt: 'Pourquoi le basketball est-il devenu un sport mondial si populaire?'
+  },
+  {
+    id: 'q29',
+    category: 'sports',
+    difficulty: 'hard',
+    question: 'Quel athlète détient le record du monde du 100 mètres?',
+    options: [
+      'Carl Lewis',
+      'Usain Bolt',
+      'Tyson Gay',
+      'Asafa Powell'
+    ],
+    correctAnswer: 1,
+    explanation: 'Usain Bolt détient le record du monde du 100 mètres avec un temps de 9,58 secondes, établi en 2009.',
+    debatePrompt: 'Ce record de Bolt peut-il être battu? Quelles sont les limites physiologiques humaines?',
+    isPremium: true
+  },
+  {
+    id: 'q30',
+    category: 'sports',
+    difficulty: 'easy',
+    question: 'Dans quel sport utilise-t-on une raquette et un volant?',
+    options: [
+      'Le tennis',
+      'Le squash',
+      'Le badminton',
+      'Le ping-pong'
+    ],
+    correctAnswer: 2,
+    explanation: 'Le badminton se joue avec une raquette et un volant (shuttlecock).',
+    debatePrompt: 'Pourquoi le badminton est-il moins médiatisé que le tennis malgré sa popularité mondiale?'
+  },
+
+  // More Politics
+  {
+    id: 'q31',
+    category: 'politics',
+    difficulty: 'medium',
+    question: 'Quel est le siège des Nations Unies?',
+    options: [
+      'Genève',
+      'Bruxelles',
+      'New York',
+      'Paris'
+    ],
+    correctAnswer: 2,
+    explanation: 'Le siège principal des Nations Unies est situé à New York, bien qu\'il existe d\'autres bureaux importants à Genève, Vienne et Nairobi.',
+    debatePrompt: 'L\'ONU est-elle encore efficace pour maintenir la paix mondiale au 21ème siècle?'
+  },
+  {
+    id: 'q32',
+    category: 'politics',
+    difficulty: 'hard',
+    question: 'Combien de pays composent l\'Union Européenne en 2024?',
+    options: [
+      '25',
+      '27',
+      '28',
+      '30'
+    ],
+    correctAnswer: 1,
+    explanation: 'L\'Union Européenne compte 27 États membres depuis le départ du Royaume-Uni en 2020.',
+    debatePrompt: 'Quels sont les avantages et inconvénients d\'une union politique et économique comme l\'UE?',
+    isPremium: true
+  },
+
+  // More Environment
+  {
+    id: 'q33',
+    category: 'environment',
+    difficulty: 'easy',
+    question: 'Quel gaz est principalement responsable de l\'effet de serre?',
+    options: [
+      'L\'oxygène',
+      'L\'azote',
+      'Le dioxyde de carbone',
+      'L\'hélium'
+    ],
+    correctAnswer: 2,
+    explanation: 'Le dioxyde de carbone (CO2) est le principal gaz à effet de serre d\'origine anthropique.',
+    debatePrompt: 'Quelles actions individuelles ont le plus d\'impact sur la réduction des émissions de CO2?'
+  },
+  {
+    id: 'q34',
+    category: 'environment',
+    difficulty: 'medium',
+    question: 'Quelle est la principale cause de la déforestation en Amazonie?',
+    options: [
+      'Les incendies naturels',
+      'L\'agriculture et l\'élevage',
+      'L\'urbanisation',
+      'L\'exploitation minière'
+    ],
+    correctAnswer: 1,
+    explanation: 'L\'agriculture et l\'élevage, notamment pour le soja et le bétail, sont responsables d\'environ 80% de la déforestation amazonienne.',
+    debatePrompt: 'Comment concilier développement économique et préservation de la forêt amazonienne?'
+  },
+  {
+    id: 'q35',
+    category: 'environment',
+    difficulty: 'hard',
+    question: 'Quel pourcentage de l\'eau douce mondiale est contenu dans les calottes glaciaires?',
+    options: [
+      'Environ 30%',
+      'Environ 50%',
+      'Environ 70%',
+      'Environ 90%'
+    ],
+    correctAnswer: 2,
+    explanation: 'Environ 68-70% de l\'eau douce de la planète est stockée dans les calottes glaciaires et les glaciers.',
+    debatePrompt: 'Quelles seraient les conséquences de la fonte complète des calottes glaciaires?',
+    isPremium: true
+  },
+
+  // More Society
+  {
+    id: 'q36',
+    category: 'society',
+    difficulty: 'medium',
+    question: 'Quel réseau social a été lancé en premier?',
+    options: [
+      'Facebook',
+      'Twitter',
+      'MySpace',
+      'Instagram'
+    ],
+    correctAnswer: 2,
+    explanation: 'MySpace a été lancé en 2003, avant Facebook (2004), Twitter (2006) et Instagram (2010).',
+    debatePrompt: 'Comment les réseaux sociaux ont-ils transformé la communication et les relations humaines?'
+  },
+  {
+    id: 'q37',
+    category: 'society',
+    difficulty: 'hard',
+    question: 'Quel est le pays le plus peuplé d\'Afrique?',
+    options: [
+      'L\'Égypte',
+      'L\'Éthiopie',
+      'Le Nigeria',
+      'L\'Afrique du Sud'
+    ],
+    correctAnswer: 2,
+    explanation: 'Le Nigeria est le pays le plus peuplé d\'Afrique avec plus de 220 millions d\'habitants.',
+    debatePrompt: 'Quels défis et opportunités la croissance démographique de l\'Afrique présente-t-elle?',
+    isPremium: true
+  },
+  {
+    id: 'q38',
+    category: 'society',
+    difficulty: 'easy',
+    question: 'Quelle est la monnaie utilisée au Japon?',
+    options: [
+      'Le yuan',
+      'Le won',
+      'Le yen',
+      'Le baht'
+    ],
+    correctAnswer: 2,
+    explanation: 'Le yen (¥) est la monnaie officielle du Japon depuis 1871.',
+    debatePrompt: 'Pourquoi le yen est-il considéré comme une valeur refuge dans l\'économie mondiale?'
   }
 ];
 

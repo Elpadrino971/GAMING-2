@@ -8,46 +8,36 @@ import LeaderboardScreen from './components/LeaderboardScreen';
 import ProfileScreen from './components/ProfileScreen';
 import TournamentsScreen from './components/TournamentsScreen';
 import Navigation from './components/Navigation';
+import WelcomeTutorial from './components/WelcomeTutorial';
+import StreakNotification from './components/StreakNotification';
 
 function App() {
   const currentScreen = useGameStore((state) => state.currentScreen);
+  const user = useGameStore((state) => state.user);
   const setUser = useGameStore((state) => state.setUser);
 
   useEffect(() => {
-    // Initialize default user (in production, this would be from auth)
-    setUser({
-      id: 'user-1',
-      username: 'TruthSeeker',
-      level: 5,
-      xp: 1250,
-      isPremium: false,
-      stats: {
-        totalQuestions: 45,
-        correctAnswers: 32,
-        debatesWon: 12,
-        debatesParticipated: 18,
-        averageDebateScore: 7.5,
-        streak: 3,
-        bestStreak: 7,
-      },
-      badges: [
-        {
-          id: 'badge-1',
-          name: 'First Steps',
-          description: 'Answer your first question',
-          icon: '🎯',
-          earnedAt: Date.now() - 1000000,
+    // Initialize default user if none exists (in production, this would be from auth)
+    if (!user) {
+      setUser({
+        id: 'user-' + Math.random().toString(36).substr(2, 9),
+        username: 'TruthSeeker',
+        level: 1,
+        xp: 0,
+        isPremium: false,
+        stats: {
+          totalQuestions: 0,
+          correctAnswers: 0,
+          debatesWon: 0,
+          debatesParticipated: 0,
+          averageDebateScore: 0,
+          streak: 0,
+          bestStreak: 0,
         },
-        {
-          id: 'badge-2',
-          name: 'Debate Master',
-          description: 'Win 10 debates',
-          icon: '🏆',
-          earnedAt: Date.now() - 500000,
-        },
-      ],
-    });
-  }, [setUser]);
+        badges: [],
+      });
+    }
+  }, [user, setUser]);
 
   const renderScreen = () => {
     switch (currentScreen) {
@@ -72,6 +62,8 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <WelcomeTutorial />
+      <StreakNotification />
       <Navigation />
       <main className="flex-1 container mx-auto px-4 py-8">
         {renderScreen()}

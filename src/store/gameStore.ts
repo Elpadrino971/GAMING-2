@@ -1,5 +1,12 @@
 import { create } from 'zustand';
 import { Question, DebateArgument, User, GameScreen, LeaderboardEntry } from '../types';
+import {
+  saveUser,
+  loadUser,
+  addDebateToHistory,
+  loadDebateHistory,
+  updateGameStats
+} from '../utils/storage';
 
 interface GameState {
   // Game state
@@ -34,7 +41,7 @@ interface GameState {
 }
 
 export const useGameStore = create<GameState>((set) => ({
-  // Initial state
+  // Initial state - load from localStorage if available
   currentScreen: 'home',
   currentQuestion: null,
   currentQuestionIndex: 0,
@@ -42,9 +49,9 @@ export const useGameStore = create<GameState>((set) => ({
   score: 0,
   debateScore: 0,
   isDebateMode: false,
-  user: null,
+  user: loadUser(),
   currentDebate: null,
-  debateHistory: [],
+  debateHistory: loadDebateHistory(),
   leaderboard: [],
 
   // Actions
@@ -60,11 +67,42 @@ export const useGameStore = create<GameState>((set) => ({
 
   startDebate: () => set({ isDebateMode: true }),
 
-  submitDebate: (argument) => set((state) => ({
-    currentDebate: argument,
-    debateHistory: [...state.debateHistory, argument],
-    debateScore: state.debateScore + argument.score,
-  })),
+  submitDebate: (argument) => set((state) => {
+    // Save to localStorage
+    addDebateToHistory(argument);
+
+    // Update user stats
+    if (state.user) {
+      const updatedUser = {
+        ...state.user,
+        stats: {
+          ...state.user.stats,
+          debatesParticipated: state.user.stats.debatesParticipated + 1,
+          debatesWon: argument.score >= 70
+            ? state.user.stats.debatesWon + 1
+            : state.user.stats.debatesWon,
+          averageDebateScore: (
+            (state.user.stats.averageDebateScore * state.user.stats.debatesParticipated + argument.score / 10) /
+            (state.user.stats.debatesParticipated + 1)
+          ),
+        },
+      };
+      saveUser(updatedUser);
+
+      return {
+        currentDebate: argument,
+        debateHistory: [...state.debateHistory, argument],
+        debateScore: state.debateScore + argument.score,
+        user: updatedUser,
+      };
+    }
+
+    return {
+      currentDebate: argument,
+      debateHistory: [...state.debateHistory, argument],
+      debateScore: state.debateScore + argument.score,
+    };
+  }),
 
   nextQuestion: () => set((state) => ({
     currentQuestionIndex: state.currentQuestionIndex + 1,
@@ -76,16 +114,57 @@ export const useGameStore = create<GameState>((set) => ({
 
   addScore: (points) => set((state) => ({ score: state.score + points })),
 
-  resetGame: () => set({
-    currentQuestionIndex: 0,
-    currentQuestion: null,
-    selectedAnswer: null,
-    score: 0,
-    debateScore: 0,
-    isDebateMode: false,
-    currentDebate: null,
-    debateHistory: [],
+  resetGame: () => set((state) => {
+    // Save game stats before resetting
+    if (state.score > 0 || state.debateScore > 0) {
+      updateGameStats(state.score, state.debateScore);
+
+      // Update user XP and level
+      if (state.user) {
+        const totalPoints = state.score + state.debateScore;
+        const newXP = state.user.xp + totalPoints;
+        const xpPerLevel = 500;
+        const newLevel = Math.floor(newXP / xpPerLevel) + 1;
+
+        const updatedUser = {
+          ...state.user,
+          xp: newXP,
+          level: Math.max(state.user.level, newLevel),
+          stats: {
+            ...state.user.stats,
+            totalQuestions: state.user.stats.totalQuestions + (state.currentQuestionIndex + 1),
+          },
+        };
+        saveUser(updatedUser);
+
+        return {
+          currentQuestionIndex: 0,
+          currentQuestion: null,
+          selectedAnswer: null,
+          score: 0,
+          debateScore: 0,
+          isDebateMode: false,
+          currentDebate: null,
+          debateHistory: loadDebateHistory(),
+          user: updatedUser,
+        };
+      }
+    }
+
+    return {
+      currentQuestionIndex: 0,
+      currentQuestion: null,
+      selectedAnswer: null,
+      score: 0,
+      debateScore: 0,
+      isDebateMode: false,
+      currentDebate: null,
+      debateHistory: loadDebateHistory(),
+    };
   }),
 
-  setUser: (user) => set({ user }),
+  setUser: (user) => {
+    saveUser(user);
+    set({ user });
+  },
 }));

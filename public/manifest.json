@@ -1,0 +1,55 @@
+{
+  "name": "Truth Battle - Quiz Social avec IA",
+  "short_name": "Truth Battle",
+  "description": "Le quiz interactif où tu débats avec l'IA et prouves tes arguments!",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0ea5e9",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "education", "entertainment"],
+  "screenshots": [
+    {
+      "src": "/screenshot1.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "label": "Quiz Screen"
+    },
+    {
+      "src": "/screenshot2.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "label": "Debate Screen"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Start Quick Quiz",
+      "short_name": "Quick Quiz",
+      "description": "Start a 5-question quiz",
+      "url": "/?mode=quick",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Leaderboard",
+      "short_name": "Rankings",
+      "description": "View global rankings",
+      "url": "/?screen=leaderboard",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

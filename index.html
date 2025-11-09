@@ -1,14 +1,56 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Primary Meta Tags -->
     <title>Truth Battle - Quiz Social avec IA</title>
-    <meta name="description" content="Le quiz interactif où tu débats avec l'IA et prouves tes arguments!" />
+    <meta name="title" content="Truth Battle - Quiz Social avec IA" />
+    <meta name="description" content="Le quiz interactif où tu débats avec l'IA et prouves tes arguments! Réponds aux questions, défends tes choix, monte au classement." />
+
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Truth Battle" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://truthbattle.com/" />
+    <meta property="og:title" content="Truth Battle - Quiz Social avec IA" />
+    <meta property="og:description" content="Le quiz interactif où tu débats avec l'IA et prouves tes arguments!" />
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://truthbattle.com/" />
+    <meta property="twitter:title" content="Truth Battle - Quiz Social avec IA" />
+    <meta property="twitter:description" content="Le quiz interactif où tu débats avec l'IA et prouves tes arguments!" />
+    <meta property="twitter:image" content="/og-image.png" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Register service worker for PWA
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered:', registration);
+            })
+            .catch((error) => {
+              console.log('SW registration failed:', error);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
