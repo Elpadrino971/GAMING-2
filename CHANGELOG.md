@@ -4,6 +4,95 @@ All notable changes to Truth Battle will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [2.1.0] - 2024-11-09
+
+### 🎮 Engagement & Social Features Update
+
+This update focuses on player engagement, social sharing, and customization.
+
+### Added
+
+#### 🏆 Achievement System
+- **25+ unlockable badges** across multiple categories
+- Beginner badges (first question, first debate, first win)
+- Milestone badges (10, 50, 100, 500 questions answered)
+- Debate mastery badges (10, 50+ debates won)
+- Streak badges (3, 7, 30, 100 days)
+- Performance badges (perfect scores, combos)
+- Category expertise badges (Science, Culture, History)
+- Special badges (night owl, early bird, speed demon)
+- Animated achievement unlock notifications
+- Badge showcase in user profile
+
+#### 🔥 Combo Scoring System
+- Consecutive correct answer tracking
+- Combo multiplier with visual indicator
+- **+2 points bonus per combo level**
+- Animated combo counter in quiz screen
+- Best combo tracking in stats
+- Combo resets on wrong answer
+- Fire emoji animation for active combos
+
+#### 📤 Social Sharing
+- Beautiful shareable result cards
+- Custom gradient card design
+- Native Share API integration
+- Download option for share cards
+- Stats display (score, accuracy, level)
+- One-tap sharing to social media
+- Fallback to clipboard copy
+
+#### ⚙️ Settings Panel
+- Sliding panel UI with smooth animations
+- Sound effects toggle
+- Background music toggle
+- Notifications preferences
+- **Data export** (JSON backup of all progress)
+- **Data import** (restore from backup)
+- Clear all data option (with confirmation)
+- About section with version info
+
+#### 📅 Daily Challenges Foundation
+- Daily challenge system structure
+- Challenge completion tracking
+- Streak-based rewards logic
+- Bonus points for daily completion
+
+### Changed
+
+- **Scoring system** now includes combo bonuses
+- Quiz screen displays active combo with animation
+- Results screen includes share card button
+- Navigation includes settings button
+- User stats track correct answers per session
+- Game store manages combo state
+
+### Technical
+
+- New `combo`, `bestCombo`, `correctAnswers` in gameStore
+- `updateCombo()` action for combo management
+- Badge unlock detection system
+- Achievement notification queue
+- Settings persistence in localStorage
+- Share card component with download capability
+
+### Files
+
+**Added (5):**
+- `src/components/AchievementNotification.tsx`
+- `src/components/SettingsPanel.tsx`
+- `src/components/ShareCard.tsx`
+- `src/utils/badges.ts`
+- `src/utils/dailyChallenge.ts`
+
+**Modified (4):**
+- `src/components/Navigation.tsx`
+- `src/components/QuizScreen.tsx`
+- `src/components/ResultsScreen.tsx`
+- `src/store/gameStore.ts`
+
+---
+
 ## [2.0.0] - 2024-11-09
 
 ### 🚀 Major Release - PWA & Persistence
