@@ -4,6 +4,7 @@ const STORAGE_KEYS = {
   USER: 'truthbattle_user',
   DEBATE_HISTORY: 'truthbattle_debates',
   GAME_STATS: 'truthbattle_stats',
+  GAME_HISTORY: 'truthbattle_game_history',
   SETTINGS: 'truthbattle_settings',
   DAILY_CHALLENGE: 'truthbattle_daily',
 };
@@ -64,13 +65,32 @@ export const addDebateToHistory = (debate: DebateArgument): void => {
 };
 
 // Game Stats Storage
-interface GameStats {
+export interface GameStats {
   totalGamesPlayed: number;
   totalScore: number;
   totalDebateScore: number;
+  totalQuestions: number;
+  correctAnswers: number;
   lastPlayedDate: number;
   longestStreak: number;
   currentStreak: number;
+}
+
+// Game History Storage
+export interface GameHistory {
+  id: string;
+  timestamp: number;
+  score: number;
+  debateScore: number;
+  maxCombo: number;
+  questions: Array<{
+    question: string;
+    category: string;
+    difficulty: string;
+    correct: boolean;
+    points: number;
+  }>;
+  categories: string[];
 }
 
 export const saveGameStats = (stats: GameStats): void => {
@@ -88,6 +108,8 @@ export const loadGameStats = (): GameStats => {
       totalGamesPlayed: 0,
       totalScore: 0,
       totalDebateScore: 0,
+      totalQuestions: 0,
+      correctAnswers: 0,
       lastPlayedDate: 0,
       longestStreak: 0,
       currentStreak: 0,
@@ -98,6 +120,8 @@ export const loadGameStats = (): GameStats => {
       totalGamesPlayed: 0,
       totalScore: 0,
       totalDebateScore: 0,
+      totalQuestions: 0,
+      correctAnswers: 0,
       lastPlayedDate: 0,
       longestStreak: 0,
       currentStreak: 0,
@@ -105,7 +129,7 @@ export const loadGameStats = (): GameStats => {
   }
 };
 
-export const updateGameStats = (score: number, debateScore: number): void => {
+export const updateGameStats = (score: number, debateScore: number, questionsAnswered: number, correctAnswers: number): void => {
   const stats = loadGameStats();
   const now = Date.now();
   const oneDayMs = 24 * 60 * 60 * 1000;
@@ -124,9 +148,40 @@ export const updateGameStats = (score: number, debateScore: number): void => {
   stats.totalGamesPlayed += 1;
   stats.totalScore += score;
   stats.totalDebateScore += debateScore;
+  stats.totalQuestions += questionsAnswered;
+  stats.correctAnswers += correctAnswers;
   stats.lastPlayedDate = now;
 
   saveGameStats(stats);
+};
+
+// Game History Storage Functions
+export const saveGameHistory = (history: GameHistory[]): void => {
+  try {
+    localStorage.setItem(STORAGE_KEYS.GAME_HISTORY, JSON.stringify(history));
+  } catch (error) {
+    console.error('Error saving game history:', error);
+  }
+};
+
+export const loadGameHistory = (): GameHistory[] => {
+  try {
+    const data = localStorage.getItem(STORAGE_KEYS.GAME_HISTORY);
+    return data ? JSON.parse(data) : [];
+  } catch (error) {
+    console.error('Error loading game history:', error);
+    return [];
+  }
+};
+
+export const addGameToHistory = (game: GameHistory): void => {
+  const history = loadGameHistory();
+  history.push(game);
+  // Keep only last 100 games
+  if (history.length > 100) {
+    history.shift();
+  }
+  saveGameHistory(history);
 };
 
 // Settings Storage
@@ -217,6 +272,7 @@ export const exportUserData = (): string => {
     user: loadUser(),
     debates: loadDebateHistory(),
     stats: loadGameStats(),
+    history: loadGameHistory(),
     settings: loadSettings(),
     exportDate: new Date().toISOString(),
   };
@@ -231,6 +287,7 @@ export const importUserData = (jsonData: string): boolean => {
     if (data.user) saveUser(data.user);
     if (data.debates) saveDebateHistory(data.debates);
     if (data.stats) saveGameStats(data.stats);
+    if (data.history) saveGameHistory(data.history);
     if (data.settings) saveSettings(data.settings);
 
     return true;

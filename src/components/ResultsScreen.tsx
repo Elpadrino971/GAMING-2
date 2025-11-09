@@ -2,13 +2,35 @@ import { useGameStore } from '../store/gameStore';
 import { Trophy, Target, MessageSquare, TrendingUp, Share2, Home } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Confetti from 'react-confetti';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ShareCard from './ShareCard';
+import { addGameToHistory, updateGameStats } from '../utils/storage';
+import type { GameHistory } from '../utils/storage';
 
 const ResultsScreen = () => {
-  const { score, debateScore, debateHistory, setCurrentScreen, resetGame, user, correctAnswers, bestCombo } = useGameStore();
+  const { score, debateScore, debateHistory, setCurrentScreen, resetGame, user, correctAnswers, bestCombo, currentQuestionIndex } = useGameStore();
   const [showConfetti, setShowConfetti] = useState(true);
   const [showShareCard, setShowShareCard] = useState(false);
+  const gameSaved = useRef(false);
+
+  // Save game to history (only once)
+  useEffect(() => {
+    if (!gameSaved.current && user) {
+      const gameHistory: GameHistory = {
+        id: 'game-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
+        timestamp: Date.now(),
+        score,
+        debateScore,
+        maxCombo: bestCombo || 0,
+        questions: [], // We'll add this when gameStore tracks questions
+        categories: [], // Extract from questions
+      };
+
+      addGameToHistory(gameHistory);
+      updateGameStats(score, debateScore, currentQuestionIndex + 1, correctAnswers);
+      gameSaved.current = true;
+    }
+  }, [score, debateScore, bestCombo, correctAnswers, currentQuestionIndex, user]);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowConfetti(false), 5000);

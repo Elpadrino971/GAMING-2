@@ -4,7 +4,7 @@
 
 Truth Battle est un jeu de quiz révolutionnaire qui combine questions de culture générale et débats interactifs alimentés par l'IA. Après chaque question, défends ta réponse face à une IA contradictrice et gagne des points selon la qualité de tes arguments.
 
-![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.3.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![PWA](https://img.shields.io/badge/PWA-Ready-success.svg)
 
@@ -44,7 +44,7 @@ Truth Battle est un jeu de quiz révolutionnaire qui combine questions de cultur
 - Création de tournois personnalisés
 - Statistiques avancées
 
-### 🔥 Nouvelles Fonctionnalités v2.2
+### 🔥 Nouvelles Fonctionnalités v2.3
 - **PWA (Progressive Web App)** : Installable sur mobile comme une vraie app!
 - **Sauvegarde Automatique** : Tous tes progrès sont sauvegardés avec localStorage
 - **Système de Séries** : Gagne des séries en jouant chaque jour
@@ -56,6 +56,9 @@ Truth Battle est un jeu de quiz révolutionnaire qui combine questions de cultur
 - **🎨 Modes de Thème** : Clair, Sombre, et Auto (suit le système)
 - **📖 Écran d'Aide** : Guide complet pour apprendre à jouer
 - **62 Questions** : 24 nouvelles questions ajoutées!
+- **📊 Statistiques Détaillées** : Graphiques de performance, analyse par difficulté
+- **📜 Historique Complet** : Suivi des 100 dernières parties avec filtres
+- **🔌 Structure API** : Prêt pour l'intégration backend complète
 
 ## 🚀 Installation
 

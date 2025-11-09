@@ -8,6 +8,8 @@ import LeaderboardScreen from './components/LeaderboardScreen';
 import ProfileScreen from './components/ProfileScreen';
 import TournamentsScreen from './components/TournamentsScreen';
 import HelpScreen from './components/HelpScreen';
+import StatsScreen from './components/StatsScreen';
+import HistoryScreen from './components/HistoryScreen';
 import Navigation from './components/Navigation';
 import WelcomeTutorial from './components/WelcomeTutorial';
 import StreakNotification from './components/StreakNotification';
@@ -64,6 +66,10 @@ function App() {
         return <TournamentsScreen />;
       case 'help':
         return <HelpScreen />;
+      case 'stats':
+        return <StatsScreen />;
+      case 'history':
+        return <HistoryScreen />;
       default:
         return <HomeScreen />;
     }

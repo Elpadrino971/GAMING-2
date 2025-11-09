@@ -4,6 +4,100 @@ All notable changes to Truth Battle will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.0] - 2024-11-09
+
+### 📊 Analytics, History & API Infrastructure Update
+
+This update adds comprehensive statistics tracking, game history, and prepares the application for backend integration.
+
+### Added
+
+#### 📊 Statistics Screen
+- **Comprehensive Stats Dashboard** with visual charts
+- Performance evolution chart (last 10 games)
+- Accuracy breakdown by difficulty level
+- Category distribution analysis
+- Best performance tracker
+- Global accuracy percentage
+- Custom SVG charts (no external library needed)
+- Real-time data visualization
+- Accessible from profile screen
+
+#### 📜 Game History System
+- **Complete game history tracker** (last 100 games)
+- Expandable game cards with detailed question breakdown
+- Filtering by date (today, week, month, all)
+- Search by category
+- Export to CSV functionality
+- Stats per game (score, accuracy, combo)
+- Question-by-question review
+- Performance indicators (🏆/⭐/📝)
+
+#### 🔌 API Integration Structure
+- **Complete API client** with retry logic and error handling
+- Modular service architecture
+- Authentication service ready
+- User management endpoints
+- Questions service structure
+- Debates evaluation service
+- Games submission system
+- Leaderboard integration ready
+- Tournaments API structure
+- Premium subscription endpoints
+- Daily challenge service
+- Comprehensive error handling
+- Token management system
+- Timeout & retry configuration
+
+#### 🗄️ Enhanced Storage System
+- Game history persistence (100 games)
+- Extended game stats tracking
+- Questions answered counter
+- Correct answers tracking
+- CSV export functionality
+- Backup includes history data
+
+### Changed
+
+- **ProfileScreen** now has quick access buttons to Stats and History
+- **ResultsScreen** automatically saves game to history
+- **Storage system** tracks more detailed statistics
+- GameStats interface extended with totalQuestions and correctAnswers
+- Export/Import now includes game history
+- Navigation flows improved with history tracking
+
+### Technical
+
+- New `StatsScreen` component with SVG chart visualization
+- New `HistoryScreen` component with filtering & search
+- `src/api/` directory structure:
+  - `config.ts` - API configuration and endpoints
+  - `client.ts` - HTTP client with retry logic
+  - `services.ts` - Service layer for all endpoints
+- Extended `storage.ts` with GameHistory interface
+- GameScreen type includes 'stats' and 'history'
+- Auto-save game data on Results screen
+- `.env.example` for API configuration
+
+### Files
+
+**Added (6):**
+- `src/components/StatsScreen.tsx`
+- `src/components/HistoryScreen.tsx`
+- `src/api/config.ts`
+- `src/api/client.ts`
+- `src/api/services.ts`
+- `.env.example`
+
+**Modified (5):**
+- `src/types/index.ts`
+- `src/App.tsx`
+- `src/components/ProfileScreen.tsx`
+- `src/components/ResultsScreen.tsx`
+- `src/utils/storage.ts`
+
+---
+
 ## [2.2.0] - 2024-11-09
 
 ### 🎨 Polish & UX Enhancement Update

@@ -1,9 +1,10 @@
 import { useGameStore } from '../store/gameStore';
-import { User, TrendingUp, Award, Target, Crown, Edit } from 'lucide-react';
+import { User, TrendingUp, Award, Target, Crown, Edit, BarChart3, History } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { playClick } from '../utils/sounds';
 
 const ProfileScreen = () => {
-  const { user } = useGameStore();
+  const { user, setCurrentScreen } = useGameStore();
 
   if (!user) {
     return <div>Loading...</div>;
@@ -89,7 +90,7 @@ const ProfileScreen = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -106,6 +107,30 @@ const ProfileScreen = () => {
               </motion.div>
             );
           })}
+        </div>
+
+        {/* Quick Actions */}
+        <div className="grid grid-cols-2 gap-3">
+          <button
+            onClick={() => {
+              playClick();
+              setCurrentScreen('stats');
+            }}
+            className="btn-secondary flex items-center justify-center space-x-2"
+          >
+            <BarChart3 size={20} />
+            <span>Statistiques Détaillées</span>
+          </button>
+          <button
+            onClick={() => {
+              playClick();
+              setCurrentScreen('history');
+            }}
+            className="btn-secondary flex items-center justify-center space-x-2"
+          >
+            <History size={20} />
+            <span>Historique des Parties</span>
+          </button>
         </div>
       </motion.div>
 
