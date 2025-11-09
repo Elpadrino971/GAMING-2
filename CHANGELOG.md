@@ -4,6 +4,99 @@ All notable changes to Truth Battle will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.0] - 2024-11-09
+
+### 🎨 Polish & UX Enhancement Update
+
+This update focuses on user experience, sound design, theming, and content expansion.
+
+### Added
+
+#### 🔊 Sound System
+- **Web Audio API integration** - Procedurally generated sound effects
+- Click sounds for all interactive elements
+- Success/error sounds for quiz answers
+- Special combo sound for streaks (5+ correct answers)
+- Achievement unlock sounds
+- Level up celebration sounds
+- Notification sounds
+- Settings to toggle sound effects
+- No external audio files needed
+
+#### 🎨 Theme System
+- **Dark mode** - Optimized for low-light viewing
+- **Light mode** - Clean, bright interface
+- **Auto mode** - Follows system preferences
+- Smooth theme transitions
+- Theme persistence in localStorage
+- Theme toggle in settings panel
+- CSS custom properties for consistent theming
+
+#### 📖 Help & Onboarding
+- **Comprehensive Help Screen** with:
+  - How to Play guide
+  - Debate System explanation
+  - Combo System details
+  - Badges & Achievements overview
+  - Progression & XP mechanics
+  - Pro Tips section
+  - Category reference
+  - Scoring table
+- Accessible from home screen
+- Animated sections with icons
+- Back navigation
+
+#### 📚 Content Expansion
+- **24 new questions added** (62 total)
+- Questions cover all 8 categories:
+  - Culture: Cinema, art, literature, universities
+  - Science: Genetics, cosmology, chemistry, astronomy
+  - History: Columbus, Incas, moon landing, US presidents
+  - Technology: Cloud computing, AI, smartphones
+  - Environment: Renewable energy, species extinction
+  - Sports: Olympics, records
+  - Politics: G7, French politics, UN
+  - Society: Financial centers, social networks
+- Mix of easy, medium, and hard difficulties
+- Premium questions for advanced players
+
+### Changed
+
+- **All buttons now have sound effects** on click
+- **Quiz answers** play success/error sounds based on correctness
+- **Combo streak** triggers special celebration sound at 5+
+- **Settings panel** includes theme selector
+- **Navigation** updated with sound feedback
+- **Version updated** to 2.2.0 in About section
+
+### Technical
+
+- New `sounds.ts` utility with SoundManager class
+- New `theme.ts` utility with theme management
+- `HelpScreen` component with animated sections
+- GameScreen type extended to include 'help'
+- Integrated sounds throughout navigation flow
+- Theme persistence and auto-detection
+- Sound settings respect user preferences
+
+### Files
+
+**Added (3):**
+- `src/utils/sounds.ts`
+- `src/utils/theme.ts`
+- `src/components/HelpScreen.tsx`
+
+**Modified (7):**
+- `src/App.tsx`
+- `src/types/index.ts`
+- `src/components/HomeScreen.tsx`
+- `src/components/QuizScreen.tsx`
+- `src/components/Navigation.tsx`
+- `src/components/SettingsPanel.tsx`
+- `src/data/questions.ts`
+
+---
+
 ## [2.1.0] - 2024-11-09
 
 ### 🎮 Engagement & Social Features Update

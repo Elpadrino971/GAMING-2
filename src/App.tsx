@@ -7,9 +7,12 @@ import ResultsScreen from './components/ResultsScreen';
 import LeaderboardScreen from './components/LeaderboardScreen';
 import ProfileScreen from './components/ProfileScreen';
 import TournamentsScreen from './components/TournamentsScreen';
+import HelpScreen from './components/HelpScreen';
 import Navigation from './components/Navigation';
 import WelcomeTutorial from './components/WelcomeTutorial';
 import StreakNotification from './components/StreakNotification';
+import { initSounds } from './utils/sounds';
+import { initTheme } from './utils/theme';
 
 function App() {
   const currentScreen = useGameStore((state) => state.currentScreen);
@@ -17,6 +20,10 @@ function App() {
   const setUser = useGameStore((state) => state.setUser);
 
   useEffect(() => {
+    // Initialize sounds and theme on app load
+    initSounds();
+    initTheme();
+
     // Initialize default user if none exists (in production, this would be from auth)
     if (!user) {
       setUser({
@@ -55,6 +62,8 @@ function App() {
         return <ProfileScreen />;
       case 'tournaments':
         return <TournamentsScreen />;
+      case 'help':
+        return <HelpScreen />;
       default:
         return <HomeScreen />;
     }

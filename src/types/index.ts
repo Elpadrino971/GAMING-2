@@ -93,4 +93,5 @@ export type GameScreen =
   | 'results'
   | 'leaderboard'
   | 'profile'
-  | 'tournaments';
+  | 'tournaments'
+  | 'help';

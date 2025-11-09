@@ -610,6 +610,390 @@ export const questions: Question[] = [
     correctAnswer: 2,
     explanation: 'Le yen (¥) est la monnaie officielle du Japon depuis 1871.',
     debatePrompt: 'Pourquoi le yen est-il considéré comme une valeur refuge dans l\'économie mondiale?'
+  },
+
+  // Additional Culture Questions
+  {
+    id: 'q39',
+    category: 'culture',
+    difficulty: 'medium',
+    question: 'Quel film a remporté le plus d\'Oscars dans l\'histoire du cinéma?',
+    options: [
+      'Titanic',
+      'Ben-Hur',
+      'Le Seigneur des Anneaux: Le Retour du Roi',
+      'West Side Story'
+    ],
+    correctAnswer: 2,
+    explanation: 'Le Seigneur des Anneaux: Le Retour du Roi, Ben-Hur et Titanic sont à égalité avec 11 Oscars chacun.',
+    debatePrompt: 'Pourquoi les trilogies épiques comme Le Seigneur des Anneaux ont-elles autant de succès au cinéma?'
+  },
+  {
+    id: 'q40',
+    category: 'culture',
+    difficulty: 'hard',
+    question: 'Quel mouvement artistique était Pablo Picasso principalement associé?',
+    options: [
+      'L\'impressionnisme',
+      'Le surréalisme',
+      'Le cubisme',
+      'L\'expressionnisme'
+    ],
+    correctAnswer: 2,
+    explanation: 'Picasso est considéré comme le co-fondateur du cubisme avec Georges Braque au début du 20ème siècle.',
+    debatePrompt: 'Comment le cubisme a-t-il changé notre façon de représenter la réalité dans l\'art?',
+    isPremium: true
+  },
+  {
+    id: 'q41',
+    category: 'culture',
+    difficulty: 'easy',
+    question: 'Quelle pyramide antique fait partie des Sept Merveilles du monde antique?',
+    options: [
+      'Les pyramides de Teotihuacan',
+      'Les pyramides de Gizeh',
+      'Les pyramides mayas',
+      'Les pyramides nubienne s'
+    ],
+    correctAnswer: 1,
+    explanation: 'La Grande Pyramide de Gizeh est la seule des Sept Merveilles du monde antique encore debout.',
+    debatePrompt: 'Pourquoi les pyramides continuent-elles de fasciner l\'humanité des millénaires après leur construction?'
+  },
+  {
+    id: 'q42',
+    category: 'culture',
+    difficulty: 'medium',
+    question: 'Quelle est la plus ancienne université encore en activité?',
+    options: [
+      'L\'Université d\'Oxford',
+      'L\'Université de Bologne',
+      'L\'Université Al-Azhar',
+      'L\'Université de la Sorbonne'
+    ],
+    correctAnswer: 2,
+    explanation: 'L\'Université Al-Azhar au Caire, fondée en 970, est considérée comme la plus ancienne université encore en activité.',
+    debatePrompt: 'Quel rôle les universités anciennes jouent-elles dans la préservation du savoir?'
+  },
+  {
+    id: 'q43',
+    category: 'culture',
+    difficulty: 'hard',
+    question: 'Qui a écrit "Les Misérables"?',
+    options: [
+      'Alexandre Dumas',
+      'Victor Hugo',
+      'Émile Zola',
+      'Honoré de Balzac'
+    ],
+    correctAnswer: 1,
+    explanation: 'Victor Hugo a écrit Les Misérables, publié en 1862, l\'un des romans les plus célèbres de la littérature française.',
+    debatePrompt: 'Pourquoi les thèmes des Misérables restent-ils pertinents dans la société actuelle?',
+    isPremium: true
+  },
+
+  // Additional Science Questions
+  {
+    id: 'q44',
+    category: 'science',
+    difficulty: 'medium',
+    question: 'Combien de chromosomes possède un être humain?',
+    options: [
+      '23',
+      '46',
+      '48',
+      '92'
+    ],
+    correctAnswer: 1,
+    explanation: 'Un être humain possède 46 chromosomes (23 paires), dont 44 autosomes et 2 chromosomes sexuels.',
+    debatePrompt: 'Comment la compréhension de la génétique transforme-t-elle la médecine moderne?'
+  },
+  {
+    id: 'q45',
+    category: 'science',
+    difficulty: 'hard',
+    question: 'Quelle est la théorie qui explique l\'origine de l\'univers?',
+    options: [
+      'La théorie de l\'évolution',
+      'La théorie du Big Bang',
+      'La théorie de la relativité',
+      'La théorie des cordes'
+    ],
+    correctAnswer: 1,
+    explanation: 'La théorie du Big Bang explique que l\'univers s\'est formé à partir d\'un état extrêmement dense et chaud il y a environ 13,8 milliards d\'années.',
+    debatePrompt: 'Quelles preuves scientifiques soutiennent la théorie du Big Bang?',
+    isPremium: true
+  },
+  {
+    id: 'q46',
+    category: 'science',
+    difficulty: 'easy',
+    question: 'Quel est le symbole chimique de l\'or?',
+    options: [
+      'Or',
+      'Au',
+      'Ag',
+      'Go'
+    ],
+    correctAnswer: 1,
+    explanation: 'Le symbole chimique de l\'or est Au, dérivé du latin "aurum".',
+    debatePrompt: 'Pourquoi l\'or a-t-il été si précieux tout au long de l\'histoire humaine?'
+  },
+  {
+    id: 'q47',
+    category: 'science',
+    difficulty: 'medium',
+    question: 'Quelle planète est surnommée la "planète rouge"?',
+    options: [
+      'Vénus',
+      'Mars',
+      'Jupiter',
+      'Saturne'
+    ],
+    correctAnswer: 1,
+    explanation: 'Mars est surnommée la planète rouge en raison de l\'oxyde de fer (rouille) présent sur sa surface.',
+    debatePrompt: 'Mars pourrait-elle devenir habitable pour l\'humanité? Quels sont les défis?'
+  },
+
+  // Additional History Questions
+  {
+    id: 'q48',
+    category: 'history',
+    difficulty: 'medium',
+    question: 'Qui a découvert l\'Amérique en 1492?',
+    options: [
+      'Amerigo Vespucci',
+      'Christophe Colomb',
+      'Vasco de Gama',
+      'Ferdinand Magellan'
+    ],
+    correctAnswer: 1,
+    explanation: 'Christophe Colomb a atteint les Amériques en 1492, bien que les Vikings et les peuples autochtones y étaient déjà présents.',
+    debatePrompt: 'Comment la "découverte" de l\'Amérique a-t-elle changé le cours de l\'histoire mondiale?'
+  },
+  {
+    id: 'q49',
+    category: 'history',
+    difficulty: 'hard',
+    question: 'Quelle civilisation a construit Machu Picchu?',
+    options: [
+      'Les Aztèques',
+      'Les Mayas',
+      'Les Incas',
+      'Les Olmèques'
+    ],
+    correctAnswer: 2,
+    explanation: 'Machu Picchu a été construit par les Incas au 15ème siècle au Pérou.',
+    debatePrompt: 'Pourquoi Machu Picchu était-il si important pour la civilisation inca?',
+    isPremium: true
+  },
+  {
+    id: 'q50',
+    category: 'history',
+    difficulty: 'easy',
+    question: 'En quelle année a eu lieu le premier alunissage?',
+    options: [
+      '1965',
+      '1969',
+      '1971',
+      '1975'
+    ],
+    correctAnswer: 1,
+    explanation: 'Le premier alunissage a eu lieu le 20 juillet 1969 avec la mission Apollo 11 de la NASA.',
+    debatePrompt: 'Quel impact les missions spatiales ont-elles eu sur la technologie et la société?'
+  },
+  {
+    id: 'q51',
+    category: 'history',
+    difficulty: 'medium',
+    question: 'Qui était le premier président des États-Unis?',
+    options: [
+      'Thomas Jefferson',
+      'John Adams',
+      'George Washington',
+      'Benjamin Franklin'
+    ],
+    correctAnswer: 2,
+    explanation: 'George Washington a été le premier président des États-Unis de 1789 à 1797.',
+    debatePrompt: 'Comment les principes fondateurs des États-Unis influencent-ils encore la politique moderne?'
+  },
+
+  // Additional Technology Questions
+  {
+    id: 'q52',
+    category: 'technology',
+    difficulty: 'medium',
+    question: 'Qu\'est-ce que le "cloud computing"?',
+    options: [
+      'Un type de météo',
+      'Le stockage et traitement de données sur Internet',
+      'Un système d\'exploitation',
+      'Une nouvelle forme d\'énergie'
+    ],
+    correctAnswer: 1,
+    explanation: 'Le cloud computing permet d\'accéder à des ressources informatiques via Internet plutôt que sur des serveurs locaux.',
+    debatePrompt: 'Quels sont les avantages et risques du stockage de données dans le cloud?'
+  },
+  {
+    id: 'q53',
+    category: 'technology',
+    difficulty: 'hard',
+    question: 'Quelle est la différence principale entre l\'IA faible et l\'IA forte?',
+    options: [
+      'La vitesse de calcul',
+      'La capacité de conscience et de compréhension générale',
+      'Le coût de développement',
+      'La consommation énergétique'
+    ],
+    correctAnswer: 1,
+    explanation: 'L\'IA forte aurait une conscience et une intelligence générale comparable à l\'humain, contrairement à l\'IA faible spécialisée dans des tâches spécifiques.',
+    debatePrompt: 'L\'IA forte est-elle réellement possible? Quels seraient les implications éthiques?',
+    isPremium: true
+  },
+  {
+    id: 'q54',
+    category: 'technology',
+    difficulty: 'easy',
+    question: 'Quelle entreprise a créé l\'iPhone?',
+    options: [
+      'Samsung',
+      'Google',
+      'Apple',
+      'Microsoft'
+    ],
+    correctAnswer: 2,
+    explanation: 'Apple a lancé le premier iPhone en 2007, révolutionnant l\'industrie des smartphones.',
+    debatePrompt: 'Comment les smartphones ont-ils transformé notre vie quotidienne?'
+  },
+
+  // Additional Environment Questions
+  {
+    id: 'q55',
+    category: 'environment',
+    difficulty: 'medium',
+    question: 'Quelle est la principale source d\'énergie renouvelable dans le monde?',
+    options: [
+      'L\'éolien',
+      'Le solaire',
+      'L\'hydroélectricité',
+      'La géothermie'
+    ],
+    correctAnswer: 2,
+    explanation: 'L\'hydroélectricité est la source d\'énergie renouvelable la plus utilisée, représentant environ 16% de la production électrique mondiale.',
+    debatePrompt: 'Quelles énergies renouvelables ont le plus de potentiel pour l\'avenir?'
+  },
+  {
+    id: 'q56',
+    category: 'environment',
+    difficulty: 'hard',
+    question: 'Combien d\'espèces animales disparaissent chaque jour selon les estimations?',
+    options: [
+      'Environ 10',
+      'Environ 50',
+      'Environ 150',
+      'Environ 500'
+    ],
+    correctAnswer: 2,
+    explanation: 'On estime qu\'environ 150 espèces disparaissent chaque jour, principalement à cause de l\'activité humaine.',
+    debatePrompt: 'Comment peut-on ralentir l\'extinction massive actuelle des espèces?',
+    isPremium: true
+  },
+
+  // Additional Sports Questions
+  {
+    id: 'q57',
+    category: 'sports',
+    difficulty: 'medium',
+    question: 'Combien de disciplines olympiques y avait-il aux Jeux Olympiques d\'été de Paris 2024?',
+    options: [
+      '28',
+      '32',
+      '36',
+      '40'
+    ],
+    correctAnswer: 1,
+    explanation: 'Les Jeux Olympiques de Paris 2024 comprenaient 32 disciplines sportives.',
+    debatePrompt: 'Les Jeux Olympiques devraient-ils continuer à ajouter de nouvelles disciplines?'
+  },
+  {
+    id: 'q58',
+    category: 'sports',
+    difficulty: 'hard',
+    question: 'Quel pays a le plus de médailles d\'or olympiques dans l\'histoire?',
+    options: [
+      'La Chine',
+      'La Russie',
+      'Les États-Unis',
+      'Le Royaume-Uni'
+    ],
+    correctAnswer: 2,
+    explanation: 'Les États-Unis ont remporté le plus grand nombre de médailles d\'or olympiques dans l\'histoire des Jeux.',
+    debatePrompt: 'Le nombre de médailles reflète-t-il vraiment la puissance sportive d\'un pays?',
+    isPremium: true
+  },
+
+  // Additional Politics Questions
+  {
+    id: 'q59',
+    category: 'politics',
+    difficulty: 'medium',
+    question: 'Quelle organisation économique regroupe les pays les plus industrialisés?',
+    options: [
+      'L\'OPEP',
+      'Le G7',
+      'L\'OTAN',
+      'L\'ASEAN'
+    ],
+    correctAnswer: 1,
+    explanation: 'Le G7 (Groupe des Sept) regroupe les sept principales économies avancées du monde.',
+    debatePrompt: 'Le G7 est-il encore pertinent face à l\'émergence de nouvelles puissances économiques?'
+  },
+  {
+    id: 'q60',
+    category: 'politics',
+    difficulty: 'hard',
+    question: 'Quelle est la durée du mandat présidentiel en France?',
+    options: [
+      '4 ans',
+      '5 ans',
+      '6 ans',
+      '7 ans'
+    ],
+    correctAnswer: 1,
+    explanation: 'Depuis 2000, le mandat présidentiel en France est de 5 ans (quinquennat), contre 7 ans auparavant.',
+    debatePrompt: 'Un mandat de 5 ans est-il optimal pour permettre à un président de réaliser son programme?',
+    isPremium: true
+  },
+
+  // Additional Society Questions
+  {
+    id: 'q61',
+    category: 'society',
+    difficulty: 'medium',
+    question: 'Quelle ville est considérée comme le centre financier mondial?',
+    options: [
+      'Londres',
+      'Tokyo',
+      'New York',
+      'Hong Kong'
+    ],
+    correctAnswer: 2,
+    explanation: 'New York, avec Wall Street, est généralement considérée comme le principal centre financier mondial.',
+    debatePrompt: 'Comment les centres financiers influencent-ils l\'économie mondiale?'
+  },
+  {
+    id: 'q62',
+    category: 'society',
+    difficulty: 'easy',
+    question: 'Quel est le réseau social le plus utilisé au monde?',
+    options: [
+      'Twitter/X',
+      'Instagram',
+      'Facebook',
+      'TikTok'
+    ],
+    correctAnswer: 2,
+    explanation: 'Facebook reste le réseau social le plus utilisé avec plus de 3 milliards d\'utilisateurs actifs mensuels.',
+    debatePrompt: 'Les réseaux sociaux ont-ils un impact global positif ou négatif sur la société?'
   }
 ];
 

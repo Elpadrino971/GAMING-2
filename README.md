@@ -4,14 +4,14 @@
 
 Truth Battle est un jeu de quiz révolutionnaire qui combine questions de culture générale et débats interactifs alimentés par l'IA. Après chaque question, défends ta réponse face à une IA contradictrice et gagne des points selon la qualité de tes arguments.
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![PWA](https://img.shields.io/badge/PWA-Ready-success.svg)
 
 ## 🌟 Caractéristiques Principales
 
 ### 🧠 Quiz Intelligent
-- **38 questions** variées sur **culture, science, société, technologie, histoire, environnement, sports, politique**
+- **62 questions** variées sur **culture, science, société, technologie, histoire, environnement, sports, politique**
 - Trois niveaux de difficulté : Facile, Moyen, Difficile
 - Base de données extensible avec questions gratuites et premium
 - Questions constamment mises à jour
@@ -44,7 +44,7 @@ Truth Battle est un jeu de quiz révolutionnaire qui combine questions de cultur
 - Création de tournois personnalisés
 - Statistiques avancées
 
-### 🔥 Nouvelles Fonctionnalités v2.0
+### 🔥 Nouvelles Fonctionnalités v2.2
 - **PWA (Progressive Web App)** : Installable sur mobile comme une vraie app!
 - **Sauvegarde Automatique** : Tous tes progrès sont sauvegardés avec localStorage
 - **Système de Séries** : Gagne des séries en jouant chaque jour
@@ -52,6 +52,10 @@ Truth Battle est un jeu de quiz révolutionnaire qui combine questions de cultur
 - **Notification de Séries** : Sois notifié de tes séries actives
 - **Export/Import** : Sauvegarde et restaure tes données
 - **Optimisation Mobile** : Interface parfaitement adaptée aux smartphones
+- **🔊 Effets Sonores** : Sons générés par Web Audio API (click, succès, erreur, combo)
+- **🎨 Modes de Thème** : Clair, Sombre, et Auto (suit le système)
+- **📖 Écran d'Aide** : Guide complet pour apprendre à jouer
+- **62 Questions** : 24 nouvelles questions ajoutées!
 
 ## 🚀 Installation
 

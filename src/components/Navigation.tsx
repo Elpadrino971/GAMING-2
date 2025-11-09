@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useGameStore } from '../store/gameStore';
 import { Home, Trophy, User, Swords, Settings } from 'lucide-react';
 import SettingsPanel from './SettingsPanel';
+import { playClick } from '../utils/sounds';
 
 const Navigation = () => {
   const { currentScreen, setCurrentScreen, user } = useGameStore();
@@ -36,7 +37,10 @@ const Navigation = () => {
               return (
                 <button
                   key={item.id}
-                  onClick={() => setCurrentScreen(item.id as any)}
+                  onClick={() => {
+                    playClick();
+                    setCurrentScreen(item.id as any);
+                  }}
                   className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all ${
                     isActive
                       ? 'bg-primary-500 text-white'
@@ -53,7 +57,10 @@ const Navigation = () => {
           {user && (
             <div className="flex items-center space-x-3">
               <button
-                onClick={() => setShowSettings(true)}
+                onClick={() => {
+                  playClick();
+                  setShowSettings(true);
+                }}
                 className="text-gray-300 hover:text-white transition-colors p-2"
               >
                 <Settings size={20} />

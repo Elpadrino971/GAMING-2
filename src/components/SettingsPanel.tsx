@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { X, Volume2, VolumeX, Download, Upload, Trash2 } from 'lucide-react';
+import { X, Volume2, VolumeX, Download, Upload, Trash2, Sun, Moon, Monitor } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { loadSettings, saveSettings, exportUserData, importUserData, clearAllData } from '../utils/storage';
+import { getTheme, setTheme, type Theme } from '../utils/theme';
+import { playClick } from '../utils/sounds';
 
 interface SettingsPanelProps {
   isOpen: boolean;
@@ -10,20 +12,30 @@ interface SettingsPanelProps {
 
 const SettingsPanel = ({ isOpen, onClose }: SettingsPanelProps) => {
   const [settings, setSettings] = useState(loadSettings());
+  const [currentTheme, setCurrentTheme] = useState<Theme>(getTheme());
 
   useEffect(() => {
     if (isOpen) {
       setSettings(loadSettings());
+      setCurrentTheme(getTheme());
     }
   }, [isOpen]);
 
   const handleToggle = (key: keyof typeof settings) => {
+    playClick();
     const newSettings = { ...settings, [key]: !settings[key] };
     setSettings(newSettings);
     saveSettings(newSettings);
   };
 
+  const handleThemeChange = (theme: Theme) => {
+    playClick();
+    setTheme(theme);
+    setCurrentTheme(theme);
+  };
+
   const handleExport = () => {
+    playClick();
     const data = exportUserData();
     const blob = new Blob([data], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -35,6 +47,7 @@ const SettingsPanel = ({ isOpen, onClose }: SettingsPanelProps) => {
   };
 
   const handleImport = () => {
+    playClick();
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'application/json';
@@ -58,6 +71,7 @@ const SettingsPanel = ({ isOpen, onClose }: SettingsPanelProps) => {
   };
 
   const handleClearData = () => {
+    playClick();
     if (confirm('⚠️ Êtes-vous sûr de vouloir effacer toutes vos données? Cette action est irréversible!')) {
       clearAllData();
       alert('Toutes les données ont été effacées');
@@ -91,11 +105,54 @@ const SettingsPanel = ({ isOpen, onClose }: SettingsPanelProps) => {
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold">Paramètres</h2>
                 <button
-                  onClick={onClose}
+                  onClick={() => {
+                    playClick();
+                    onClose();
+                  }}
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   <X size={24} />
                 </button>
+              </div>
+
+              {/* Appearance */}
+              <div className="card mb-6">
+                <h3 className="text-lg font-bold mb-4">Apparence</h3>
+                <div className="grid grid-cols-3 gap-3">
+                  <button
+                    onClick={() => handleThemeChange('light')}
+                    className={`p-3 rounded-lg border-2 transition-all ${
+                      currentTheme === 'light'
+                        ? 'border-primary-500 bg-primary-500/20'
+                        : 'border-white/10 bg-white/5 hover:bg-white/10'
+                    }`}
+                  >
+                    <Sun size={24} className="mx-auto mb-1" />
+                    <div className="text-xs">Clair</div>
+                  </button>
+                  <button
+                    onClick={() => handleThemeChange('dark')}
+                    className={`p-3 rounded-lg border-2 transition-all ${
+                      currentTheme === 'dark'
+                        ? 'border-primary-500 bg-primary-500/20'
+                        : 'border-white/10 bg-white/5 hover:bg-white/10'
+                    }`}
+                  >
+                    <Moon size={24} className="mx-auto mb-1" />
+                    <div className="text-xs">Sombre</div>
+                  </button>
+                  <button
+                    onClick={() => handleThemeChange('auto')}
+                    className={`p-3 rounded-lg border-2 transition-all ${
+                      currentTheme === 'auto'
+                        ? 'border-primary-500 bg-primary-500/20'
+                        : 'border-white/10 bg-white/5 hover:bg-white/10'
+                    }`}
+                  >
+                    <Monitor size={24} className="mx-auto mb-1" />
+                    <div className="text-xs">Auto</div>
+                  </button>
+                </div>
               </div>
 
               {/* Audio Settings */}
@@ -220,7 +277,7 @@ const SettingsPanel = ({ isOpen, onClose }: SettingsPanelProps) => {
               <div className="card">
                 <h3 className="text-lg font-bold mb-4">À propos</h3>
                 <div className="space-y-2 text-sm text-gray-400">
-                  <div>Version: 2.0.0</div>
+                  <div>Version: 2.1.0</div>
                   <div>© 2024 Truth Battle</div>
                   <div className="pt-2">
                     <a href="#" className="text-primary-400 hover:text-primary-300">

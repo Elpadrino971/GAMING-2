@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { useGameStore } from '../store/gameStore';
 import { getRandomQuestions } from '../data/questions';
-import { Sparkles, Brain, TrendingUp, Crown } from 'lucide-react';
+import { Sparkles, Brain, TrendingUp, Crown, HelpCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { playClick } from '../utils/sounds';
 
 const HomeScreen = () => {
   const { setCurrentScreen, setCurrentQuestion, resetGame, user } = useGameStore();
   const [questionCount, setQuestionCount] = useState(5);
 
   const startGame = () => {
+    playClick();
     resetGame();
     const questions = getRandomQuestions(questionCount, user?.isPremium || false);
     if (questions.length > 0) {
@@ -99,7 +101,10 @@ const HomeScreen = () => {
             {[5, 10, 15, 20].map((count) => (
               <button
                 key={count}
-                onClick={() => setQuestionCount(count)}
+                onClick={() => {
+                  playClick();
+                  setQuestionCount(count);
+                }}
                 className={`px-6 py-3 rounded-lg font-bold transition-all ${
                   questionCount === count
                     ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white scale-110'
@@ -129,6 +134,17 @@ const HomeScreen = () => {
           className="btn-primary w-full text-xl py-4"
         >
           Lancer le Quiz 🚀
+        </button>
+
+        <button
+          onClick={() => {
+            playClick();
+            setCurrentScreen('help');
+          }}
+          className="mt-4 w-full flex items-center justify-center space-x-2 text-gray-400 hover:text-white transition-colors py-2"
+        >
+          <HelpCircle size={20} />
+          <span>Comment Jouer ?</span>
         </button>
 
         <div className="mt-6 grid grid-cols-3 gap-4 text-center">

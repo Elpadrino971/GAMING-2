@@ -3,6 +3,7 @@ import { useGameStore } from '../store/gameStore';
 import { getRandomQuestions } from '../data/questions';
 import { CheckCircle, XCircle, MessageSquare, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { playClick, playSuccess, playError, playCombo } from '../utils/sounds';
 
 const QuizScreen = () => {
   const {
@@ -38,10 +39,22 @@ const QuizScreen = () => {
 
   const handleAnswerSelect = (index: number) => {
     if (showAnswer) return;
+    playClick();
     selectAnswer(index);
     setShowAnswer(true);
 
     const isCorrect = index === currentQuestion.correctAnswer;
+
+    // Play sound effect
+    if (isCorrect) {
+      if (combo >= 5) {
+        playCombo(); // Special combo sound for streaks
+      } else {
+        playSuccess();
+      }
+    } else {
+      playError();
+    }
 
     // Update combo
     updateCombo(isCorrect);
@@ -56,11 +69,13 @@ const QuizScreen = () => {
   };
 
   const handleDebate = () => {
+    playClick();
     startDebate();
     setCurrentScreen('debate');
   };
 
   const handleNext = () => {
+    playClick();
     if (currentQuestionIndex + 1 >= totalQuestions) {
       setCurrentScreen('results');
     } else {
