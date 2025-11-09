@@ -3,10 +3,12 @@ import { Trophy, Target, MessageSquare, TrendingUp, Share2, Home } from 'lucide-
 import { motion } from 'framer-motion';
 import Confetti from 'react-confetti';
 import { useState, useEffect } from 'react';
+import ShareCard from './ShareCard';
 
 const ResultsScreen = () => {
-  const { score, debateScore, debateHistory, setCurrentScreen, resetGame } = useGameStore();
+  const { score, debateScore, debateHistory, setCurrentScreen, resetGame, user, correctAnswers, bestCombo } = useGameStore();
   const [showConfetti, setShowConfetti] = useState(true);
+  const [showShareCard, setShowShareCard] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowConfetti(false), 5000);
@@ -30,18 +32,7 @@ const ResultsScreen = () => {
   const performance = getPerformanceMessage();
 
   const handleShare = () => {
-    const shareText = `🎯 J'ai fait ${totalScore} points sur Truth Battle!\n\n📊 Quiz: ${score}pts\n💬 Débats: ${debateScore}pts\n\nEssaie de me battre! 🔥`;
-
-    if (navigator.share) {
-      navigator.share({
-        title: 'Truth Battle - Mes Résultats',
-        text: shareText,
-      });
-    } else {
-      // Fallback to copy to clipboard
-      navigator.clipboard.writeText(shareText);
-      alert('Résultats copiés dans le presse-papier!');
-    }
+    setShowShareCard(true);
   };
 
   const handlePlayAgain = () => {
@@ -52,6 +43,17 @@ const ResultsScreen = () => {
   return (
     <>
       {showConfetti && <Confetti recycle={false} numberOfPieces={500} />}
+      {showShareCard && user && (
+        <ShareCard
+          score={score}
+          debateScore={debateScore}
+          totalQuestions={questionsAnswered}
+          correctAnswers={correctAnswers}
+          username={user.username}
+          level={user.level}
+          onClose={() => setShowShareCard(false)}
+        />
+      )}
 
       <div className="max-w-4xl mx-auto">
         <motion.div

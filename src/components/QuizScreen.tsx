@@ -16,6 +16,8 @@ const QuizScreen = () => {
     addScore,
     setCurrentScreen,
     user,
+    combo,
+    updateCombo,
   } = useGameStore();
 
   const [showAnswer, setShowAnswer] = useState(false);
@@ -39,11 +41,17 @@ const QuizScreen = () => {
     selectAnswer(index);
     setShowAnswer(true);
 
-    // Add score if correct
-    if (index === currentQuestion.correctAnswer) {
-      const points = currentQuestion.difficulty === 'easy' ? 10 :
-                    currentQuestion.difficulty === 'medium' ? 20 : 30;
-      addScore(points);
+    const isCorrect = index === currentQuestion.correctAnswer;
+
+    // Update combo
+    updateCombo(isCorrect);
+
+    // Add score if correct (with combo bonus)
+    if (isCorrect) {
+      const basePoints = currentQuestion.difficulty === 'easy' ? 10 :
+                        currentQuestion.difficulty === 'medium' ? 20 : 30;
+      const comboBonus = Math.floor(combo * 2); // 2pts per combo level
+      addScore(basePoints + comboBonus);
     }
   };
 
@@ -82,6 +90,38 @@ const QuizScreen = () => {
           />
         </div>
       </div>
+
+      {/* Combo Display */}
+      <AnimatePresence>
+        {combo > 0 && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            className="mb-6"
+          >
+            <div className="card bg-gradient-to-r from-orange-500/20 to-red-500/20 border-2 border-orange-500/50 p-4 text-center">
+              <div className="flex items-center justify-center space-x-2">
+                <motion.div
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 1 }}
+                  className="text-3xl"
+                >
+                  🔥
+                </motion.div>
+                <div>
+                  <div className="text-2xl font-bold text-orange-400">
+                    Combo x{combo}!
+                  </div>
+                  <div className="text-xs text-orange-300">
+                    +{combo * 2} points bonus par réponse
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Question Card */}
       <motion.div

@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { useGameStore } from '../store/gameStore';
-import { Home, Trophy, User, Swords } from 'lucide-react';
+import { Home, Trophy, User, Swords, Settings } from 'lucide-react';
+import SettingsPanel from './SettingsPanel';
 
 const Navigation = () => {
   const { currentScreen, setCurrentScreen, user } = useGameStore();
+  const [showSettings, setShowSettings] = useState(false);
 
   const navItems = [
     { id: 'home', label: 'Accueil', icon: Home },
@@ -49,6 +52,12 @@ const Navigation = () => {
 
           {user && (
             <div className="flex items-center space-x-3">
+              <button
+                onClick={() => setShowSettings(true)}
+                className="text-gray-300 hover:text-white transition-colors p-2"
+              >
+                <Settings size={20} />
+              </button>
               <div className="text-right hidden md:block">
                 <div className="text-sm font-bold">{user.username}</div>
                 <div className="text-xs text-gray-400">Niveau {user.level}</div>
@@ -58,6 +67,7 @@ const Navigation = () => {
               </div>
             </div>
           )}
+          <SettingsPanel isOpen={showSettings} onClose={() => setShowSettings(false)} />
         </div>
       </div>
     </nav>

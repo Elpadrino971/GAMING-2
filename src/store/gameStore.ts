@@ -17,6 +17,9 @@ interface GameState {
   score: number;
   debateScore: number;
   isDebateMode: boolean;
+  combo: number;
+  bestCombo: number;
+  correctAnswers: number;
 
   // User state
   user: User | null;
@@ -38,6 +41,7 @@ interface GameState {
   addScore: (points: number) => void;
   resetGame: () => void;
   setUser: (user: User) => void;
+  updateCombo: (isCorrect: boolean) => void;
 }
 
 export const useGameStore = create<GameState>((set) => ({
@@ -49,6 +53,9 @@ export const useGameStore = create<GameState>((set) => ({
   score: 0,
   debateScore: 0,
   isDebateMode: false,
+  combo: 0,
+  bestCombo: 0,
+  correctAnswers: 0,
   user: loadUser(),
   currentDebate: null,
   debateHistory: loadDebateHistory(),
@@ -114,6 +121,16 @@ export const useGameStore = create<GameState>((set) => ({
 
   addScore: (points) => set((state) => ({ score: state.score + points })),
 
+  updateCombo: (isCorrect) => set((state) => {
+    const newCombo = isCorrect ? state.combo + 1 : 0;
+    const newCorrectAnswers = isCorrect ? state.correctAnswers + 1 : state.correctAnswers;
+    return {
+      combo: newCombo,
+      bestCombo: Math.max(state.bestCombo, newCombo),
+      correctAnswers: newCorrectAnswers,
+    };
+  }),
+
   resetGame: () => set((state) => {
     // Save game stats before resetting
     if (state.score > 0 || state.debateScore > 0) {
@@ -133,6 +150,7 @@ export const useGameStore = create<GameState>((set) => ({
           stats: {
             ...state.user.stats,
             totalQuestions: state.user.stats.totalQuestions + (state.currentQuestionIndex + 1),
+            correctAnswers: state.user.stats.correctAnswers + state.correctAnswers,
           },
         };
         saveUser(updatedUser);
@@ -146,6 +164,9 @@ export const useGameStore = create<GameState>((set) => ({
           isDebateMode: false,
           currentDebate: null,
           debateHistory: loadDebateHistory(),
+          combo: 0,
+          bestCombo: 0,
+          correctAnswers: 0,
           user: updatedUser,
         };
       }
@@ -160,6 +181,9 @@ export const useGameStore = create<GameState>((set) => ({
       isDebateMode: false,
       currentDebate: null,
       debateHistory: loadDebateHistory(),
+      combo: 0,
+      bestCombo: 0,
+      correctAnswers: 0,
     };
   }),
 
